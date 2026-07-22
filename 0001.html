@@ -91,7 +91,6 @@
             color: #1e4b8c;
         }
 
-        /* Vocabulary pair box */
         .vocab-pair {
             display: inline-flex;
             align-items: center;
@@ -181,7 +180,6 @@
             color: #0b3d6b;
         }
 
-        /* Spotify embed container */
         .audio-section {
             margin: 20px 0 24px;
             text-align: center;
@@ -193,7 +191,45 @@
             font-size: 0.95em;
         }
 
-        /* Print styles */
+        .image-link-box {
+            text-align: center;
+            margin-top: 32px;
+            border-top: 1px solid var(--border);
+            padding-top: 22px;
+        }
+        .image-link-box a {
+            display: inline-block;
+            background: var(--blue);
+            color: #ffffff;
+            padding: 10px 24px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .image-link-box a:hover {
+            background: #153e6d;
+        }
+
+        /* ── فوتر با نام و لینکدین ── */
+        .credit-footer {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 0.85em;
+            color: #6b5e47;
+        }
+        .credit-footer a {
+            color: #1e4b8c;
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 1px dashed #1e4b8c;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .credit-footer a:hover {
+            color: #d97706;
+            border-color: #d97706;
+        }
+
         @media print {
             body {
                 background: #fff;
@@ -232,7 +268,13 @@
                 border: 1px solid #ccc;
             }
             .audio-section {
-                display: none; /* hide audio player when printing */
+                display: none;
+            }
+            .image-link-box {
+                display: none;
+            }
+            .credit-footer {
+                display: block; /* در پرینت هم بماند */
             }
             @page {
                 margin: 12mm;
@@ -357,6 +399,22 @@
     </div>
 
     <p style="text-align:center; color:#b0a07a; font-size:0.8em; margin-top:24px;">🌐 Face2Face — Make friends around the world! &nbsp;|&nbsp; Join today. It's free!</p>
+
+    <!-- لینک نسخه تصویری -->
+    <div class="image-link-box">
+        <a href="https://mahdi-bouzarjomehri.github.io/Readio/0001-jpg.html" target="_blank" rel="noopener noreferrer">
+            دیدن نسخه‌ی تصویر کتاب
+        </a>
+    </div>
+
+    <!-- فوتر نام و لینکدین -->
+    <div class="credit-footer">
+        ✨ Created by 
+        <a href="https://www.linkedin.com/in/mahdi-bouzarjomehri" target="_blank" rel="noopener noreferrer">
+            Mahdi Bouzarjomehri
+        </a>
+    </div>
+
 </div>
 </body>
 </html>
