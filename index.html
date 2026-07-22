@@ -3,360 +3,392 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Face2Face | Make Friends Around the World</title>
+
+    <!--
+    ================================================================
+        READIO - پیج مادر
+        آدرس این فایل: https://mahdi-bouzarjomehri.github.io/Readio/
+    ================================================================
+
+    📌 چطور درس جدید اضافه کنی؟
+    ─────────────────────────────────────────────────────────────────
+    ۱. صفحه‌ی html درس جدید رو در همان ریپازیتوری آپلود کن
+       (مثلاً: 0002.html, 0003.html, ...)
+
+    ۲. در بخش LESSONS LIST پایین این فایل،
+       یه آیتم جدید مثل نمونه زیر بنویس و paste کن:
+
+        {
+            id: "0002",
+            title: "عنوان درس",
+            subtitle: "توضیح کوتاه به فارسی",
+            link: "https://mahdi-bouzarjomehri.github.io/Readio/0002.html",
+            tag: "Unit 1"
+        },
+
+    ✅ همین. درس جدید خودکار زیر بقیه اضافه می‌شه.
+    ================================================================
+    -->
+
+    <title>Readio — Active Reading</title>
+
     <style>
+        /* ── ریشه رنگ‌ها و متغیرها ── */
         :root {
-            --bg: #f5f2eb;
-            --card-bg: #ffffff;
-            --text: #2c2416;
-            --accent: #d97706;
-            --blue: #1e4b8c;
-            --blue-light: #eaf0f9;
-            --tag-en-bg: #dbe9fa;
-            --tag-fa-bg: #fef3c7;
-            --border: #e0d6c2;
-            --radius: 10px;
-            --radius-sm: 6px;
+            --bg:           #ede8dd;
+            --card-bg:      #ffffff;
+            --text:         #2c2416;
+            --muted:        #6b5e47;
+            --accent:       #d97706;
+            --blue:         #1e4b8c;
+            --blue-light:   #eaf0f9;
+            --border:       #e0d6c2;
+            --radius:       12px;
+            --radius-sm:    8px;
+            --shadow:       0 4px 20px rgba(0,0,0,0.07);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
-            background: #ede8dd;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
             color: var(--text);
             line-height: 1.8;
-            direction: ltr;
-            padding: 20px 16px 40px;
-            display: flex;
-            justify-content: center;
+            padding: 28px 16px 60px;
             -webkit-font-smoothing: antialiased;
         }
 
-        .page {
-            max-width: 780px;
-            width: 100%;
-            background: var(--card-bg);
-            padding: 32px 28px 28px;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-            border: 1px solid var(--border);
+        /* ── بدنه کلی صفحه ── */
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
         }
 
-        h1 {
-            font-size: 2.4em;
+        /* ── هدر صفحه ── */
+        .site-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 36px 24px 32px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .site-header .logo {
+            font-size: 2.8em;
+            font-weight: 900;
+            color: var(--blue);
+            letter-spacing: -1px;
+            margin-bottom: 6px;
+        }
+
+        .site-header .logo span {
+            color: var(--accent);
+        }
+
+        .site-header .tagline {
+            font-size: 1em;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        /* ── باکس توضیح روش مطالعه ── */
+        .method-box {
+            background: #fffbf2;
+            border: 1px dashed #e2cfa2;
+            border-radius: var(--radius-sm);
+            padding: 20px 24px;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .method-box h2 {
+            font-size: 1.1em;
+            color: #92400e;
+            margin-bottom: 14px;
+            font-weight: 700;
+        }
+
+        /* ── ردیف‌های جدول روش مطالعه ── */
+        .method-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88em;
+            color: var(--text);
+        }
+
+        .method-table th {
+            background: #f5efe0;
+            color: #7c5e10;
+            padding: 7px 12px;
+            font-weight: 700;
+            border-bottom: 2px solid #e2cfa2;
+        }
+
+        .method-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #f0e8d5;
+            vertical-align: top;
+        }
+
+        .method-table tr:last-child td { border-bottom: none; }
+
+        /* ── تیتر بخش لیست درس‌ها ── */
+        .lessons-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            direction: rtl;
+        }
+
+        .lessons-header h2 {
+            font-size: 1.3em;
             font-weight: 800;
             color: var(--blue);
-            letter-spacing: -0.5px;
-            margin-bottom: 6px;
-            text-align: left;
-        }
-        h2 {
-            font-size: 1.5em;
-            font-weight: 700;
-            color: #1e3a5f;
-            margin-top: 24px;
-            margin-bottom: 10px;
-            text-align: left;
-            border-bottom: 2px solid #f0e5d2;
-            padding-bottom: 4px;
-        }
-        .subheading {
-            font-size: 1.1em;
-            font-weight: 500;
-            color: #4b3a22;
-            margin-bottom: 12px;
-            text-align: left;
         }
 
-        p {
-            margin-bottom: 12px;
-            text-align: left;
-        }
-        .people-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px 16px;
-            list-style: none;
-            padding: 0;
-            margin-bottom: 16px;
-            justify-content: flex-start;
-        }
-        .people-list li {
+        .lessons-count {
+            font-size: 0.82em;
+            background: var(--blue-light);
+            color: var(--blue);
+            padding: 3px 12px;
+            border-radius: 20px;
             font-weight: 600;
-            color: #1e4b8c;
         }
 
-        /* Vocabulary pair box */
-        .vocab-pair {
-            display: inline-flex;
+        /* ── کارت هر درس ── */
+        .lesson-card {
+            display: flex;
             align-items: center;
-            gap: 6px;
-            background: #f8f5ee;
+            gap: 16px;
+            background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: var(--radius-sm);
-            padding: 4px 8px;
-            margin: 2px 0;
-            font-size: 0.9em;
-            white-space: nowrap;
-            vertical-align: middle;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-        }
-        .vocab-pair .en-box {
-            background: var(--tag-en-bg);
-            color: #0b3d6b;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9em;
-        }
-        .vocab-pair .equals {
-            color: #a68a56;
-            font-weight: bold;
-            font-size: 0.85em;
-            margin: 0 2px;
-        }
-        .vocab-pair .fa-box {
-            background: var(--tag-fa-bg);
-            color: #7c5e10;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9em;
+            padding: 16px 20px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: inherit;
+            transition: box-shadow 0.2s, transform 0.15s, border-color 0.2s;
             direction: rtl;
-            unicode-bidi: embed;
         }
 
-        .translation-line {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 10px;
-            background: #fefdf9;
-            border-left: 4px solid var(--accent);
-            padding: 8px 14px;
-            border-radius: var(--radius-sm);
-            margin: 12px 0 16px;
+        .lesson-card:hover {
+            box-shadow: 0 6px 22px rgba(30,75,140,0.10);
+            transform: translateY(-2px);
+            border-color: #c4baa6;
+        }
+
+        /* ── شماره درس ── */
+        .lesson-number {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--blue-light);
+            color: var(--blue);
+            font-weight: 800;
             font-size: 0.9em;
-            justify-content: flex-start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .profile-box {
-            background: #fffbf2;
-            border: 2px dashed #e2cfa2;
-            border-radius: var(--radius);
-            padding: 18px 20px;
-            margin: 20px 0 10px;
-        }
-        .profile-box h2 {
-            border-bottom: none;
-            margin-top: 0;
-            color: #b45309;
-        }
-        .profile-detail {
-            margin-bottom: 6px;
-            font-weight: 500;
-        }
-        .profile-detail .label {
+        /* ── متن کارت ── */
+        .lesson-info { flex: 1; }
+
+        .lesson-info .lesson-title {
+            font-size: 1em;
             font-weight: 700;
+            color: var(--blue);
+            margin-bottom: 2px;
+        }
+
+        .lesson-info .lesson-sub {
+            font-size: 0.82em;
+            color: var(--muted);
+        }
+
+        /* ── تگ unit ── */
+        .lesson-tag {
+            flex-shrink: 0;
+            font-size: 0.75em;
+            background: #fef3c7;
             color: #92400e;
-            display: inline-block;
-            min-width: 80px;
-        }
-
-        .def-note {
-            background: #f3f6fb;
-            border-radius: var(--radius-sm);
-            padding: 10px 16px;
-            margin: 12px 0;
-            font-size: 0.92em;
-            color: #334155;
-            border: 1px solid #cddcec;
-        }
-        .def-note strong {
-            color: #0b3d6b;
-        }
-
-        /* Spotify embed container */
-        .audio-section {
-            margin: 20px 0 24px;
-            text-align: center;
-        }
-        .audio-section .audio-title {
+            padding: 3px 10px;
+            border-radius: 20px;
             font-weight: 600;
-            color: #1e4b8c;
-            margin-bottom: 8px;
-            font-size: 0.95em;
         }
 
-        /* Print styles */
-        @media print {
-            body {
-                background: #fff;
-                padding: 0;
-                margin: 0;
-            }
-            .page {
-                box-shadow: none;
-                border: 1px solid #ccc;
-                max-width: 100%;
-                padding: 20px 18px;
-                font-size: 11px;
-                line-height: 1.6;
-            }
-            .vocab-pair, .translation-line {
-                background: #fff !important;
-                border: 1px solid #aaa;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-                color-adjust: exact;
-            }
-            .vocab-pair .en-box {
-                background: #e0e7ff;
-                color: #000;
-            }
-            .vocab-pair .fa-box {
-                background: #fef9c3;
-                color: #000;
-            }
-            .profile-box {
-                border: 1px dashed #999;
-                background: #fff;
-            }
-            .def-note {
-                background: #f8fafc;
-                border: 1px solid #ccc;
-            }
-            .audio-section {
-                display: none; /* hide audio player when printing */
-            }
-            @page {
-                margin: 12mm;
-                size: A4;
-            }
+        /* ── فلش سمت چپ (نشانه کلیک‌پذیری) ── */
+        .lesson-arrow {
+            flex-shrink: 0;
+            color: #c4baa6;
+            font-size: 1.1em;
+            transition: color 0.2s;
+        }
+
+        .lesson-card:hover .lesson-arrow { color: var(--accent); }
+
+        /* ── فوتر ── */
+        .site-footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.8em;
+            color: #b0a07a;
         }
     </style>
 </head>
 <body>
-<div class="page" style="direction:ltr;">
 
-    <!-- ========== HEADER ========== -->
-    <h1>Face2Face</h1>
-    <p class="subheading" style="font-size:1.2em; font-weight:600;">Make friends around the world!</p>
-    <div style="margin-bottom:12px;">
-        <span class="vocab-pair">
-            <span class="en-box">Make friends</span>
-            <span class="equals">=</span>
-            <span class="fa-box" dir="rtl">دوست پیدا کنی</span>
-        </span>
-    </div>
+<div class="container">
 
-    <!-- ========== AUDIO PLAYER (SPOTIFY) ========== -->
-    <div class="audio-section">
-        <div class="audio-title">🔊 Listen to the full text</div>
-        <iframe data-testid="embed-iframe" style="border-radius:12px" 
-                src="https://open.spotify.com/embed/episode/2bjYGOh6hYqCwbfI8dWQDb?utm_source=generator&si=86899ff4208e44dc" 
-                width="100%" height="152" frameBorder="0" allowfullscreen="" 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy"></iframe>
-    </div>
+    <!-- ════════════════════════════════════
+         هدر سایت
+    ════════════════════════════════════ -->
+    <header class="site-header">
+        <div class="logo">Re<span>a</span>dio</div>
+        <div class="tagline">یادگیری انگلیسی با متن‌های Active Reading</div>
 
-    <p>Face2Face has six million members worldwide. Join today. It's free!</p>
-    <div style="margin-bottom:12px;">
-        <span class="vocab-pair">
-            <span class="en-box">worldwide</span>
-            <span class="equals">=</span>
-            <span class="fa-box" dir="rtl">در سراسر جهان</span>
-        </span>
-    </div>
-
-    <!-- ========== PEOPLE YOU MAY KNOW ========== -->
-    <h2>People You May Know:</h2>
-    <ul class="people-list">
-        <li>Kelly</li><li>Paul</li><li>Ronnie</li><li>Karla</li>
-        <li>Joyce</li><li>Tommy</li><li>Phoebe</li>
-    </ul>
-
-    <p>On Face2Face you can make your own homepage. Put photos of yourself and your friends on your page. Tell the world about you: your name and age, your hobbies, your hometown, your school, your favorite food, movies, and music. Meet your friends online. You can also make friends with other Face2Face members.</p>
-
-    <p>Start a blog. Write your thoughts and tell stories online. Read other people’s blogs. Put music and video on your page. Join or start a discussion group. Talk about different topics (movies, music, sports, travel). Send text messages from your computer to a friend's cell phone. You can also leave a message on a friend’s homepage. Play games alone or with other Face2Face members.</p>
-
-    <div style="margin-bottom:12px;">
-        <span class="vocab-pair">
-            <span class="en-box">stories</span>
-            <span class="equals">=</span>
-            <span class="fa-box" dir="rtl">داستان‌هایت</span>
-        </span>
-    </div>
-
-    <p>Watch new music videos. Listen to your favorite songs. Read about bands and singers. Learn about shows in your area. Read about new movies and your favorite actors. Watch short previews of new movies. Buy movie tickets online.</p>
-
-    <div class="translation-line">
-        <span class="vocab-pair">
-            <span class="en-box">shows</span>
-            <span class="equals">=</span>
-            <span class="fa-box" dir="rtl">برنامه‌های هنری</span>
-        </span>
-        <span class="vocab-pair">
-            <span class="en-box">Learn about</span>
-            <span class="equals">=</span>
-            <span class="fa-box" dir="rtl">باخبر شو</span>
-        </span>
-    </div>
-
-    <p><strong>Your profile can look like this . . .</strong></p>
-    <div style="margin-bottom:12px;">
-        <span class="vocab-pair">
-            <span class="en-box">can look like this</span>
-            <span class="equals">=</span>
-            <span class="fa-box" dir="rtl">به این شکل می‌تواند باشد</span>
-        </span>
-    </div>
-
-    <div class="profile-box">
-        <h2 style="margin-top:0;">Ari's Page!</h2>
-        <div class="profile-detail"><span class="label">Name:</span> Ari</div>
-        <div class="profile-detail"><span class="label">Age:</span> 20</div>
-        <div class="profile-detail"><span class="label">Lives in:</span> Cape Town, South Africa</div>
-
-        <div class="profile-detail">
-            <span class="label">Likes:</span> surfing, clubbing, traveling
+        <!-- ── توضیح روش مطالعه ── -->
+        <div class="method-box">
+            <h2>📖 چطور با هر درس کار کنی؟</h2>
+            <table class="method-table">
+                <thead>
+                    <tr>
+                        <th>روز</th>
+                        <th>کار</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>روز ۱</td>
+                        <td>یک ساعت کار کامل — خواندن فعال ← ویس با متن ← سوالات کتاب ← شنیدن بدون متن (۵-۶ بار)</td>
+                    </tr>
+                    <tr>
+                        <td>روز ۲</td>
+                        <td>ویس رو ۳ تا ۴ بار در حین کارهای روزمره گوش بده</td>
+                    </tr>
+                    <tr>
+                        <td>روز ۳</td>
+                        <td>همون ویس، ۳ تا ۴ بار دیگه</td>
+                    </tr>
+                    <tr>
+                        <td>روز ۴</td>
+                        <td>یه بار بدون متن گوش بده — اگه راحت بود برو درس بعدی ✅</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="translation-line" style="margin-top:6px; margin-bottom:10px;">
-            <span class="vocab-pair"><span class="en-box">Likes</span><span class="equals">=</span><span class="fa-box" dir="rtl">علاقه‌ها</span></span>
-            <span class="vocab-pair"><span class="en-box">surfing</span><span class="equals">=</span><span class="fa-box" dir="rtl">موج‌سواری</span></span>
-            <span class="vocab-pair"><span class="en-box">clubbing</span><span class="equals">=</span><span class="fa-box" dir="rtl">کلوپ رفتن</span></span>
-            <span class="vocab-pair"><span class="en-box">traveling</span><span class="equals">=</span><span class="fa-box" dir="rtl">سفر کردن</span></span>
-        </div>
+    </header>
 
-        <div class="profile-detail">
-            <span class="label">Listens to:</span> hip-hop, reggae
-        </div>
-        <div style="margin-top:4px;">
-            <span class="vocab-pair">
-                <span class="en-box">reggae</span>
-                <span class="equals">=</span>
-                <span class="fa-box" dir="rtl">رگی (سبکی از موسیقی)</span>
-            </span>
-        </div>
-
-        <div class="profile-detail" style="margin-top:12px;">
-            <span class="label">Friends:</span> Karla, Joyce, Tommy, Phoebe
-        </div>
+    <!-- ════════════════════════════════════
+         لیست درس‌ها
+         ──────────────────────────────────
+         ⬇ اینجا همه درس‌ها ساخته می‌شن
+         از روی آرایه LESSONS پایین صفحه
+    ════════════════════════════════════ -->
+    <div class="lessons-header">
+        <h2>📚 درس‌ها</h2>
+        <span class="lessons-count" id="lessonsCount"></span>
     </div>
 
-    <div class="def-note">
-        <strong>A hobby</strong> is an activity you do in your free time.
-    </div>
-    <div class="def-note">
-        <strong>A preview</strong> is a short part of a movie you watch before the movie starts in cinemas.
+    <div id="lessonsList">
+        <!-- کارت‌ها توسط JavaScript ساخته می‌شن -->
     </div>
 
-    <p style="text-align:center; color:#b0a07a; font-size:0.8em; margin-top:24px;">🌐 Face2Face — Make friends around the world! &nbsp;|&nbsp; Join today. It's free!</p>
-</div>
+    <!-- ════════════════════════════════════
+         فوتر
+    ════════════════════════════════════ -->
+    <footer class="site-footer">
+        Readio &nbsp;|&nbsp; Active Reading Series &nbsp;|&nbsp; Mahdi Bouzarjomehri
+    </footer>
+
+</div><!-- /container -->
+
+
+<!-- ================================================================
+     📋 LESSONS LIST — اینجا درس‌ها رو اضافه می‌کنی
+     ================================================================
+
+     برای هر درس جدید:
+     ─────────────────
+     ۱. صفحه html درس رو در ریپازیتوری آپلود کن (مثلاً 0002.html)
+     ۲. یه آبجکت مثل نمونه زیر به آرایه اضافه کن:
+
+         {
+             id:       "0002",           ← شماره درس (برای نمایش دایره)
+             title:    "عنوان انگلیسی",  ← عنوان اصلی درس
+             subtitle: "توضیح فارسی",    ← زیرنویس کوتاه
+             link:     "https://mahdi-bouzarjomehri.github.io/Readio/0002.html",
+             tag:      "Unit 1"          ← تگ دلخواه (unit، chapter، ...)
+         },
+
+     ⚠️  آخرین آیتم آرایه نباید ویرگول داشته باشه (یا داشته باشه — هر دو کار می‌کنه)
+     ================================================================ -->
+
+<script>
+    const LESSONS = [
+
+        /* ── درس اول ── */
+        {
+            id:       "0001",
+            title:    "Face2Face — Make Friends Around the World",
+            subtitle: "آشنایی با Face2Face، یک شبکه اجتماعی",
+            link:     "https://mahdi-bouzarjomehri.github.io/Readio/0001.html",
+            tag:      "Unit 1"
+        },
+
+        /*
+        ══════════════════════════════════════════════════════
+        ⬇ درس‌های بعدی رو اینجا اضافه کن — فقط کپی و paste
+
+        {
+            id:       "0002",
+            title:    "...",
+            subtitle: "...",
+            link:     "https://mahdi-bouzarjomehri.github.io/Readio/0002.html",
+            tag:      "Unit 1"
+        },
+
+        ══════════════════════════════════════════════════════
+        */
+
+    ];
+
+    /* ────────────────────────────────────────────────────
+       این بخش کارت‌ها رو می‌سازه — نیازی به دستکاری نداره
+    ──────────────────────────────────────────────────── */
+    (function buildLessons() {
+        const list = document.getElementById("lessonsList");
+        const count = document.getElementById("lessonsCount");
+
+        /* نمایش تعداد درس‌ها */
+        count.textContent = LESSONS.length + " درس";
+
+        /* ساخت کارت برای هر درس */
+        LESSONS.forEach(function(lesson) {
+            const a = document.createElement("a");
+            a.href      = lesson.link;
+            a.className = "lesson-card";
+            a.target    = "_blank";
+            a.rel       = "noopener noreferrer";
+
+            a.innerHTML =
+                '<div class="lesson-number">' + lesson.id + '</div>' +
+                '<div class="lesson-info">' +
+                    '<div class="lesson-title">' + lesson.title + '</div>' +
+                    '<div class="lesson-sub">'   + lesson.subtitle + '</div>' +
+                '</div>' +
+                '<span class="lesson-tag">' + lesson.tag + '</span>' +
+                '<span class="lesson-arrow">&#8592;</span>';
+
+            list.appendChild(a);
+        });
+    })();
+</script>
+
 </body>
 </html>
