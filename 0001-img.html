@@ -47,22 +47,6 @@
             border: 1px solid var(--border);
         }
 
-        h1 {
-            font-size: 2.4em;
-            font-weight: 800;
-            color: var(--blue);
-            letter-spacing: -0.5px;
-            margin-bottom: 6px;
-            text-align: left;
-        }
-        .subheading {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #4b3a22;
-            margin-bottom: 12px;
-            text-align: left;
-        }
-
         .audio-section {
             margin: 20px 0 24px;
             text-align: center;
@@ -115,13 +99,8 @@
 <body>
 <div class="page" style="direction:ltr;">
 
-    <!-- هدر -->
-    <h1>Face2Face</h1>
-    <p class="subheading">Make friends around the world!</p>
-
-    <!-- پخش‌کننده صوتی -->
+    <!-- پخش‌کننده صوتی (بدون عنوان اضافه) -->
     <div class="audio-section">
-        <div class="audio-title">🔊 Listen to the full text</div>
         <iframe data-testid="embed-iframe" style="border-radius:12px" 
                 src="https://open.spotify.com/embed/episode/2bjYGOh6hYqCwbfI8dWQDb?utm_source=generator&si=86899ff4208e44dc" 
                 width="100%" height="152" frameBorder="0" allowfullscreen="" 
@@ -129,13 +108,13 @@
                 loading="lazy"></iframe>
     </div>
 
-    <!-- عکس اصلی (جایگزین متن) -->
+    <!-- عکس اصلی -->
     <div class="image-container">
         <img src="https://mahdi-bouzarjomehri.github.io/Readio/image/0001.img" 
              alt="تصویر درس Face2Face">
     </div>
 
-    <!-- لینک برگشت به صفحه متن -->
+    <!-- لینک برگشت به نسخه متنی -->
     <div class="back-link">
         <a href="https://mahdi-bouzarjomehri.github.io/Readio/0001.html">
             📝 برگشت به نسخهٔ متنی
